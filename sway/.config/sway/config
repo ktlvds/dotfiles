@@ -16,13 +16,12 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-# set $menu fuzzel
+set $menu fuzzel
 
 exec noctalia
 
 set $ipc noctalia msg
-bindsym $mod+space exec $ipc panel-toggle launcher
-bindsym $mod+s exec $ipc panel-toggle control-center
+
 bindsym $mod+comma exec $ipc settings-toggle
 bindsym --locked XF86AudioRaiseVolume exec $ipc volume-up
 bindsym --locked XF86AudioLowerVolume exec $ipc volume-down
@@ -39,7 +38,8 @@ exec swayidle -w \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'noctalia msg session lock'
 
-bindsym $mod+l exec noctalia msg session lock
+bindsym $mod+Escape exec noctalia msg session lock
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -56,8 +56,10 @@ bindsym $mod+l exec noctalia msg session lock
    }
 
    input type:keyboard {
-       xkb_layout "eu"
+       xkb_layout "eu,ru"
    }
+
+bindsym $mod+space input type:keyboard xkb_switch_layout next
 
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
@@ -74,6 +76,7 @@ bindsym $mod+l exec noctalia msg session lock
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    #bindsym $mod+d exec $ipc panel-toggle launcher
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -159,7 +162,7 @@ bindsym $mod+l exec noctalia msg session lock
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+Shift+f focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
