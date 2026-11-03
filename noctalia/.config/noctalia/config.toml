@@ -17,7 +17,7 @@ offline_mode          = false        # block all outgoing HTTP when true
 # panel_anchor_bar   = "main"        # bar panels attach to without a source bar; omit = first enabled bar
 telemetry_enabled     = false        # send an anonymous startup ping
 niri_overview_type_to_launch_enabled = false # opt in to type-to-launch from niri overview
-polkit_agent          = false
+polkit_agent          = true
 password_style        = "default"    # default | random
 readline_shortcuts    = false        # readline-style shortcuts in every text field (Ctrl+A = line start)
 settings_show_advanced = true        # show advanced settings by default in Settings
@@ -220,7 +220,7 @@ offset_y           = 8              # absolute vertical margin from the screen e
 # ── OSD ───────────────────────────────────────────────────────────────────────
 
 [osd]
-position = "top_right"              # top_right | top_left | top_center | bottom_right | bottom_left | bottom_center | center_right | center_left
+position = "bottom_center"              # top_right | top_left | top_center | bottom_right | bottom_left | bottom_center | center_right | center_left
 position_vertical = "top_center"    # same options; used when orientation = "vertical"
 orientation = "horizontal"          # horizontal | vertical (volume/brightness sliders only; text popups stay horizontal)
 hide_delay_ms = 1400                # time before a popup starts hiding; range 250 to 10000 ms
@@ -375,14 +375,14 @@ address          = "Batumi"                # e.g. "Toronto, ON"; geocoded when a
 # pre_action_fade_seconds = 2.0
 
 [idle.behavior.lock]
-timeout = 600
+timeout = 300
 action = "lock"
-enabled = false
+enabled = true
 
 [idle.behavior.screen-off]
-timeout = 660
+timeout = 600
 action = "screen_off"
-enabled = false
+enabled = true
 
 # ── Keybinds ──────────────────────────────────────────────────────────────────
 
@@ -406,7 +406,7 @@ background_opacity = 1.0
 compositor_blur    = true          # false stops compositor blur for this bar
 radius             = 12
 margin_ends        = 180
-margin_edge        = 10
+margin_edge        = 0
 padding            = 14
 widget_spacing     = 6
 scale              = 1.0
