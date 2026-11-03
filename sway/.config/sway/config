@@ -24,16 +24,18 @@ set $ipc noctalia msg
 
 bindsym $mod+comma exec $ipc settings-toggle
 
+#default_border none
+default_border pixel 1
 ### Idle configuration
 #
 # Example configuration:
 #
-exec swayidle -w \
-          timeout 300 'noctalia msg session lock' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'noctalia msg session lock'
+#exec swayidle -w \
+#          timeout 300 'noctalia msg session lock' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'noctalia msg session lock'
 
-bindsym $mod+Escape exec noctalia msg session lock
+#bindsym $mod+Escape exec noctalia msg session lock
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -67,10 +69,12 @@ bindsym $mod+space input type:keyboard xkb_switch_layout next
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    set $q 24
+    bindcode $mod+Shift+$q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    set $d 40
+    bindcode $mod+$d exec $menu
     #bindsym $mod+d exec $ipc panel-toggle launcher
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -81,7 +85,8 @@ bindsym $mod+space input type:keyboard xkb_switch_layout next
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    set $c 54
+    bindcode $mod+Shift+$c reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -151,7 +156,8 @@ bindsym $mod+space input type:keyboard xkb_switch_layout next
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    set $f 41
+    bindcode $mod+$f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
